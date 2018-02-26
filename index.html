@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video info minimal Electron App</title>
+</head>
+<body>
+<h1>Video Info</h1>
+<form>
+    <div>
+        <label for="selectVideo">
+            <input type="file" id="selectVideo" accept="video/*"> Select a video
+        </label>
+    </div>
+    <div>
+        <button type="submit">Get info</button>
+    </div>
+</form>
+<h2 id="result"></h2>
+<script type="text/javascript">
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+
+    document
+        .querySelector('form')
+        .addEventListener('submit', (event) => {
+            event.preventDefault();
+            const {path} = document.querySelector('input').files[0];
+
+            ipcRenderer.send('video:submit', path);
+        });
+    ipcRenderer.on('video:read', (event, data) => {
+       document.querySelector('#result').innerHTML = 'Duration: ' + data + 's';
+    });
+</script>
+
+</body>
+</html>

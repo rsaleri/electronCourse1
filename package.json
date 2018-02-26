@@ -1,14 +1,16 @@
 {
   "name": "videoinfo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Just a simple video metadata extractor made in Electron",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "electron": "electron .",
+    "electronVM": "electron . --disable-gpu"
   },
-  "author": "",
+  "author": "Roberto Saleri",
   "license": "ISC",
   "dependencies": {
-    "electron": "^1.8.2"
+    "electron": "^1.8.2",
+    "fluent-ffmpeg": "^2.1.2"
   }
 }
